@@ -42,5 +42,6 @@ onMounted(() => {
   app.getCategories()
   app.getLocation()
   profile.getAllProfiles()
+  profile.getAllArtizan()
 })
 </script>

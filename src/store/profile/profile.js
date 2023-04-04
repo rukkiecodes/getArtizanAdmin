@@ -22,7 +22,8 @@ export const useProfileStore = defineStore('profile', {
         guarantorName: '',
         guarantorPhone: '',
         loading: false,
-        users: []
+        users: [],
+        artizans: []
     }),
 
     actions: {
@@ -117,6 +118,20 @@ export const useProfileStore = defineStore('profile', {
                 this.users = []
                 snapshot.forEach(doc => {
                     this.users.push({
+                        id: doc.id,
+                        ...doc.data()
+                    })
+                })
+            })
+
+            return unsub
+        },
+
+        async getAllArtizan() {
+            const unsub = onSnapshot(query(collection(db, "artizans"), limit(100)), snapshot => {
+                this.artizans = []
+                snapshot.forEach(doc => {
+                    this.artizans.push({
                         id: doc.id,
                         ...doc.data()
                     })

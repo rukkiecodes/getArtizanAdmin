@@ -65,6 +65,11 @@ const routes = [
     icon: "mdi-account",
     to: "/dashboard/profile",
   },
+  {
+    title: "Artizans",
+    icon: "mdi-account",
+    to: "/dashboard/artizans",
+  },
 ];
 
 onMounted(() => {

@@ -51,6 +51,20 @@ const routes = [
           }
         ]
       },
+      {
+        path: 'artizans',
+        component: () => import('@/views/Artizans.vue'),
+        children: [
+          {
+            path: '',
+            component: () => import('@/views/artizans/Artizans.vue')
+          },
+          {
+            path: ':id',
+            component: () => import('@/views/artizans/Artizan.vue')
+          }
+        ]
+      },
     ]
   }
 ]

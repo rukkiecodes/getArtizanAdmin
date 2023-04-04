@@ -3,12 +3,6 @@
     :class="bookings.bookings.length <= 0 ? 'd-flex align-center' : ''">
     <v-container :class="bookings.bookings.length <= 0 ? 'd-flex justify-center' : ''">
       <v-row v-if="bookings.bookings.length > 0">
-        <v-col cols="12">
-          <v-btn @click="bookings.getBookings" class="bg-indigo rounded-pill text-capitalize" flat>
-            <v-icon class="mr-2">mdi-reload</v-icon>
-            Refresh List
-          </v-btn>
-        </v-col>
         <v-col v-for="booking in bookings.bookings" :key="booking.id" cols="12" sm="4" md="3">
           <v-card rounded="xl">
             <v-card-text class="text-center">
@@ -63,7 +57,7 @@
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
-      <v-card-text style="max-height: 800px;">
+      <v-card-text style="max-height: 800px">
         <v-row>
           <v-col cols="12" md="7" order="1" order-md="0">
             <v-card flat>
@@ -141,34 +135,22 @@
           </v-col>
         </v-row>
       </v-card-text>
-      <v-card-actions>
-        <v-spacer />
-        <v-btn @click="() => {
-          currentBooking.dialog = false
-          acceptBooking.declineBooking(currentBooking)
-        }" class="mr-3 px-5" rounded="xl">Decline</v-btn>
-
-        <v-btn :disabled="profile.user?.acceptedBookings?.includes(currentBooking.id)" @click="() => {
-          currentBooking.dialog = false
-          acceptBooking.acceptBooking(currentBooking)
-        }" class="bg-indigo px-5" rounded="xl">Accept</v-btn>
-      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script setup>
-import { useArtizanGetBookingStore } from "@/store/booking/getBookings";
-import { useAcceptArtizanBooking } from "@/store/booking/acceptBooking";
+import { useArtizanGetBookingStore } from "@/store/booking/getBookings"
+import { useAcceptArtizanBooking } from "@/store/booking/acceptBooking"
 import { useProfileStore } from '@/store/profile/profile'
-import { ref, computed } from "vue";
+import { ref, computed } from "vue"
 import { useDisplay } from 'vuetify'
 
-import CurrentUserVue from "./CurrentUser.vue";
+import CurrentUserVue from "./CurrentUser.vue"
 
-const bookings = ref(useArtizanGetBookingStore());
-const acceptBooking = ref(useAcceptArtizanBooking());
-const profile = ref(useProfileStore());
+const bookings = ref(useArtizanGetBookingStore())
+const acceptBooking = ref(useAcceptArtizanBooking())
+const profile = ref(useProfileStore())
 
 const { name } = useDisplay()
 
@@ -182,7 +164,7 @@ const setCurrnetBooking = (prop) => {
   currentBooking.value = {
     dialog: true,
     ...prop
-  };
+  }
 }
 
 const fullscreen = computed(() => {

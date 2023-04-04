@@ -35,6 +35,7 @@ onMounted(() => {
   booking.getBookings()
   job.getJobs()
   history.getHistory()
+  status.getPending()
   status.getApproved()
   status.getCompleted()
   status.getDeclined()

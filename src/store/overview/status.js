@@ -1,6 +1,6 @@
 // Utilities
 import { db } from '@/plugins/firebase'
-import { collection, doc, getDoc, onSnapshot } from 'firebase/firestore'
+import { collection, doc, getDoc, onSnapshot, query, where } from 'firebase/firestore'
 import { defineStore } from 'pinia'
 
 export const useStatusStore = defineStore('artizanStatus', {
@@ -12,30 +12,36 @@ export const useStatusStore = defineStore('artizanStatus', {
     }),
 
     actions: {
-        async getPending() { },
+        async getPending() {
+            const unsub = onSnapshot(query(collection(db, "booking"), where('status', '==', 'pending')), snapshot => {
+                this.pending = snapshot.docs.length
+            })
+
+            return unsub
+        },
 
         async getApproved() {
-            // const userData = await JSON.parse(localStorage.getItem('getArtizanArtisanData'))
+            const unsub = onSnapshot(query(collection(db, "approved"), where('status', '==', 'pending')), snapshot => {
+                this.approved = snapshot.docs.length
+            })
 
-            // const exsistingJobs = (await getDoc(doc(db, 'users', userData.uid))).data()
-
-            // this.approved = exsistingJobs.acceptedBookings.length
+            return unsub
         },
 
         async getCompleted() {
-            // const userData = await JSON.parse(localStorage.getItem('getArtizanArtisanData'))
+            const unsub = onSnapshot(query(collection(db, "completed"), where('status', '==', 'pending')), snapshot => {
+                this.completed = snapshot.docs.length
+            })
 
-            // const exsistingJobs = (await getDoc(doc(db, 'users', userData.uid))).data()
-
-            // this.completed = exsistingJobs.completedBookings.length
+            return unsub
         },
 
         async getDeclined() {
-            // const userData = await JSON.parse(localStorage.getItem('getArtizanArtisanData'))
+            const unsub = onSnapshot(query(collection(db, "declined"), where('status', '==', 'pending')), snapshot => {
+                this.declined = snapshot.docs.length
+            })
 
-            // const exsistingJobs = (await getDoc(doc(db, 'users', userData.uid))).data()
-
-            // this.declined = exsistingJobs.declinedBookings.length
+            return unsub
         },
     }
 })

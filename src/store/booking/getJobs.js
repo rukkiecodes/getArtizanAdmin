@@ -17,18 +17,18 @@ export const useArtizanGetJobsStore = defineStore('getArtizanJobs', {
 
     actions: {
         async getJobs() {
-            const userData = await JSON.parse(localStorage.getItem('getArtizanArtisanData'))
+            // const userData = await JSON.parse(localStorage.getItem('getArtizanArtisanData'))
 
-            const exsistingJobs = (await getDoc(doc(db, 'artizans', userData.uid))).data().acceptedBookings
+            // const exsistingJobs = (await getDoc(doc(db, 'artizans', userData.uid))).data().acceptedBookings
 
-            exsistingJobs.forEach(data => {
-                getDoc(doc(db, 'booking', data)).then((doc) => {
-                    this.jobs.push({
-                        id: doc.id,
-                        ...doc.data()
-                    })
-                })
-            })
+            // exsistingJobs.forEach(data => {
+            //     getDoc(doc(db, 'booking', data)).then((doc) => {
+            //         this.jobs.push({
+            //             id: doc.id,
+            //             ...doc.data()
+            //         })
+            //     })
+            // })
         }
     }
 })

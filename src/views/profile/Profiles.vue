@@ -29,7 +29,7 @@
             </v-list>
   
             <v-card-actions>
-              <v-btn :to="`/dashboard/profile/${user.uid}`" block class="bg-indigo-lighten-5 text-indigo" rounded="xl">View User</v-btn>
+              <v-btn :to="`/dashboard/profile/${user.uid}`" block class="bg-indigo-lighten-5 text-indigo text-capitalize" rounded="xl">View User</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>

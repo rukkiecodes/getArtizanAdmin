@@ -23,16 +23,5 @@ export const useAppStore = defineStore('app', {
 
       return unsub
     },
-
-    getLocation() {
-      const unsub = onSnapshot(collection(db, 'location'), (querySnapshot) => {
-        this.location = []
-        querySnapshot.forEach((doc) => {
-          this.location.push(...doc.data().categories)
-        })
-      })
-
-      return unsub
-    }
   }
 })

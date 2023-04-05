@@ -40,7 +40,6 @@ onMounted(() => {
   status.getCompleted()
   status.getDeclined()
   app.getCategories()
-  app.getLocation()
   profile.getAllProfiles()
   profile.getAllArtizan()
 })

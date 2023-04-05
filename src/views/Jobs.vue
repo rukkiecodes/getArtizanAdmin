@@ -40,8 +40,8 @@
                             <v-list-item density="compact">
                                 <v-list-item-subtitle class="text-caption">Location</v-list-item-subtitle>
                                 <v-list-item-title class="text-grey-darken-4 text-body-2 font-weight-bold">{{
-                                    jobs?.location
-                                }}</v-list-item-title>
+                                    jobs?.location.lga
+                                }}, {{ jobs?.location.state }}</v-list-item-title>
                             </v-list-item>
                             <v-list-item density="compact">
                                 <v-list-item-subtitle class="text-caption">Date</v-list-item-subtitle>
@@ -138,8 +138,8 @@
                                 <v-list-item density="compact">
                                     <v-list-item-subtitle class="text-caption">Location</v-list-item-subtitle>
                                     <v-list-item-title class="text-grey-darken-4 text-body-2 font-weight-bold">{{
-                                        currentJob?.location
-                                    }}</v-list-item-title>
+                                        currentJob?.location.lga
+                                    }}, {{ currentJob?.location.state }}</v-list-item-title>
                                 </v-list-item>
                                 <v-list-item density="compact">
                                     <v-list-item-subtitle class="text-caption">Date</v-list-item-subtitle>
